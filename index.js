@@ -41,7 +41,11 @@ function getExtrasModsFromModlistData(modlistData) {
         return o.modName === 'Extras_separator';
     });
     
-    return modlistData.slice(extrasSeparator.index);
+    const lsLast = modlistData.find(o => {
+        return o.modName === 'Occlusion Output';
+    });
+    
+    return extrasSeparator ? modlistData.slice(extrasSeparator.index) : modlistData.slice(lsLast.index);
 }
 
 function getModDirNames(profilePath) {
